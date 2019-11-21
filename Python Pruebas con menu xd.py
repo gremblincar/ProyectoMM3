@@ -111,22 +111,26 @@ def exec_code(conversion): #exec permite utilizar un string como código
 
 def main():
 
-    function = "y'' + 2y' + 4y = 5x^4 + 3x^2 - x"
+    #function = "y'' + 2y' + 4y = 5x^4 + 3x^2 - x"
     
-    """print("Ingresa la función: ")
-    function = str(input())"""
+    #"""print("Ingresa la función: ")
+    #function = str(input())"""
     
-    conversion, index = define_y_sintaxis(function)
-    conversion += define_x_sintaxis(function, index + 1) + ')'
+    #conversion, index = define_y_sintaxis(function)
+    #conversion += define_x_sintaxis(function, index + 1) + ')'
     
-    exec_code(conversion)
+    
+    tVIH=30
+    pfVIH=10
+    tEBOLA=0.0273
+    pfEBOLA=1.5
+    #exec_code(conversion)
     
     print ("Indice de contagio de enfermedades")
     menu = {}
     menu['1']="VIH." 
-    menu['2']="Artritis"
-    menu['3']="Asma"
-    menu['4']="Salir"
+    menu['2']="Ebola"
+    menu['3']="Salir"
     while True: 
       options=menu.keys()
       print (menu)
@@ -136,11 +140,19 @@ def main():
         selection=input("Su opcion: ") 
         if selection == '1': 
            print ("VIH")
+           piVIH =float(input("Cuantas personas estan infectadas: ")) 
+           t =float(input("Escoje tiempo a simular: ")) 
+           kVIH=  (math.log(pfVIH/piVIH)) / tVIH
+           result=piVIH*math.e**(kVIH*t)
+           print(result)
         elif selection == '2': 
-           print ("Artritis")
-        elif selection == '3':
-           print ("Asma") 
-        elif selection == '4': 
+           print ("Ebola")
+           piEBOLA =float(input("Cuantas personas estan infectadas: ")) 
+           t =float(input("Escoje tiempo a simular: ")) 
+           kEBOLA=  (math.log(pfEBOLA/piEBOLA)) / tEBOLA
+           result=piEBOLA*math.e**(kEBOLA*t)
+           print(result)
+        elif selection == '3': 
            sys.exit()
         else: 
            print ("Opcion Desconocida!") 
